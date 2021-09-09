@@ -11,11 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Zaplanuj ogrodzenie',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(),
+      home: Container(
+        // height: 200,
+        // width: 200,
+        color: Colors.red,
+        child: const Text('Hej'),
+      ),
     );
   }
 }
