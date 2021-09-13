@@ -1,4 +1,5 @@
 import 'package:desktop_window/desktop_window.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'main_containers/content_container.dart';
@@ -23,6 +24,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.grey.shade800,
         backgroundColor: Colors.grey.shade900,
+        fontFamily: 'Rajdhani',
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 30,
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       home: const MainWindow(),
     );

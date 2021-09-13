@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class TitleAppContainer extends StatelessWidget {
@@ -12,6 +11,11 @@ class TitleAppContainer extends StatelessWidget {
       width: double.infinity,
       height: 80,
       color: Theme.of(context).primaryColor,
+      child: Text(
+        "Projektowanie płotu",
+        style: Theme.of(context).textTheme.headline1,
+      ),
+      alignment: Alignment.center,
     );
   }
 }
