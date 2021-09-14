@@ -31,6 +31,8 @@ dependencies:
     sdk: flutter
   desktop_window: ^0.4.0
   google_fonts: ^2.1.0
+  numberpicker: ^2.1.1
+  desktop: ^2.0.4
 
 
 

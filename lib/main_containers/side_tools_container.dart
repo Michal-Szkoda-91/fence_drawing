@@ -8,9 +8,18 @@ class SideToolsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).backgroundColor,
+            offset: const Offset(0, 20),
+            blurRadius: 14,
+            spreadRadius: 14,
+          ),
+        ],
+      ),
       width: 300,
       height: double.infinity,
-      color: Theme.of(context).backgroundColor,
     );
   }
 }

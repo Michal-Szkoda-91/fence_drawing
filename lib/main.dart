@@ -24,12 +24,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.grey.shade800,
         backgroundColor: Colors.grey.shade900,
+        cardColor: Colors.grey.shade600,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          secondary: Colors.amber,
+        ),
         fontFamily: 'Rajdhani',
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            fontSize: 30,
+        textTheme: TextTheme(
+          headline1: const TextStyle(
+            fontSize: 45,
             color: Colors.red,
             fontWeight: FontWeight.bold,
+          ),
+          headline2: TextStyle(
+            fontSize: 25,
+            color: Colors.grey[300],
           ),
         ),
       ),
