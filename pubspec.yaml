@@ -33,6 +33,7 @@ dependencies:
   google_fonts: ^2.1.0
   numberpicker: ^2.1.1
   desktop: ^2.0.4
+  provider: ^6.0.0
 
 
 
