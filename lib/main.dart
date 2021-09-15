@@ -1,6 +1,7 @@
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 import 'main_containers/content_container.dart';
 import 'main_containers/side_tools_container.dart';
@@ -39,6 +40,11 @@ class MyApp extends StatelessWidget {
             fontSize: 25,
             color: Colors.grey[300],
           ),
+          headline6: TextStyle(
+            fontSize: 15,
+            color: Colors.red.shade800,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       home: const MainWindow(),
@@ -53,18 +59,20 @@ class MainWindow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TitleAppContainer(),
-        Expanded(
-          child: Row(
-            children: const [
-              ContentContainer(),
-              SideToolsContainer(),
-            ],
+    return Scaffold(
+      body: Column(
+        children: [
+          const TitleAppContainer(),
+          Expanded(
+            child: Row(
+              children: const [
+                ContentContainer(),
+                SideToolsContainer(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
