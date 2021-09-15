@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class PlannedLenght extends StatefulWidget {
   const PlannedLenght({
@@ -11,12 +10,16 @@ class PlannedLenght extends StatefulWidget {
 }
 
 class _PlannedLenghtState extends State<PlannedLenght> {
-  final TextEditingController _controller = TextEditingController();
+  late String _submittedValue;
+  late int _numberToDivide;
+
+  static final RegExp _numberRegExp = RegExp(r'^[0-9]+$');
 
   @override
   void initState() {
     super.initState();
-    _controller.text = '2000';
+    _submittedValue = '2000';
+    _numberToDivide = 2000;
   }
 
   @override
@@ -24,60 +27,90 @@ class _PlannedLenghtState extends State<PlannedLenght> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Planowana długość ogrodzenia',
-          style: Theme.of(context).textTheme.headline2,
+        Expanded(
+          child: Text(
+            'Planowana długość ogrodzenia',
+            style: Theme.of(context).textTheme.headline2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+          ),
         ),
-        const SizedBox(width: 50),
-        Card(
-          child: SizedBox(
-            width: 120,
-            height: 50,
-            child: TextFormField(
-              textAlign: TextAlign.center,
-              controller: _controller,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline2!
-                  .copyWith(fontWeight: FontWeight.w600),
-              cursorColor: Theme.of(context).colorScheme.secondary,
-              decoration: InputDecoration(
-                isDense: true,
-                //Genereal settings
-                fillColor: Theme.of(context).cardColor,
-                filled: true,
-                //specific settings
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).backgroundColor,
-                    width: 3,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary,
-                    width: 3,
-                  ),
+        // const SizedBox(width: 50),
+        SizedBox(
+          width: 140,
+          height: 50,
+          child: TextFormField(
+            initialValue: _submittedValue,
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .headline2!
+                .copyWith(fontWeight: FontWeight.w600),
+            cursorColor: Theme.of(context).colorScheme.secondary,
+            decoration: InputDecoration(
+              isDense: true,
+              //Genereal settings
+              fillColor: Theme.of(context).cardColor,
+              filled: true,
+              //specific settings
+              errorStyle: Theme.of(context).textTheme.headline6,
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).backgroundColor,
+                  width: 3,
                 ),
               ),
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              onChanged: (val) {
-                setState(() {
-                  _controller.text = val;
-                });
-              },
+              errorBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.red,
+                  width: 3,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.secondary,
+                  width: 3,
+                ),
+              ),
             ),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Uzupłnij dane';
+              } else if (_numberRegExp.hasMatch(value)) {
+                return null;
+              } else {
+                return 'Tylko cyfry!';
+              }
+            },
+            onChanged: (val) {
+              if (_numberRegExp.hasMatch(val)) {
+                setState(() {
+                  _submittedValue = val;
+                  try {
+                    _numberToDivide = int.parse(val);
+                  } catch (e) {
+                    // ignore: avoid_print
+                    print(e);
+                  }
+                });
+              } else {
+                setState(() {
+                  _submittedValue = _submittedValue;
+                });
+              }
+            },
           ),
         ),
         Text(
           '  mm',
           style: Theme.of(context).textTheme.headline2,
         ),
-        const SizedBox(width: 50),
+        // const SizedBox(width: 50),
         SizedBox(
           width: 140,
           child: Text(
-            '${(int.parse(_controller.text) / 1000)}',
+            '${(_numberToDivide / 1000)}',
             style: Theme.of(context)
                 .textTheme
                 .headline2
@@ -90,6 +123,7 @@ class _PlannedLenghtState extends State<PlannedLenght> {
           '  m',
           style: Theme.of(context).textTheme.headline2,
         ),
+        const SizedBox(width: 50),
       ],
     );
   }
