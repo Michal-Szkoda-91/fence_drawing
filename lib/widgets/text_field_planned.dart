@@ -1,20 +1,16 @@
-import 'package:fence_drawing/providers/content_row_porviders.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CustomTextField extends StatefulWidget {
-  final String selectPosition;
+import '../providers/content_row_porviders.dart';
 
-  const CustomTextField({
-    Key? key,
-    required this.selectPosition,
-  }) : super(key: key);
+class PlannedLengthTextField extends StatefulWidget {
+  const PlannedLengthTextField({Key? key}) : super(key: key);
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<PlannedLengthTextField> createState() => _PlannedLengthTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _PlannedLengthTextFieldState extends State<PlannedLengthTextField> {
   static final RegExp _numberRegExp = RegExp(r'^[0-9]+$');
 
   @override
@@ -68,26 +64,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
         },
         onChanged: (val) {
           if (_numberRegExp.hasMatch(val)) {
-            switch (widget.selectPosition) {
-              case 'firstRow':
-                Provider.of<DataProviders>(context, listen: false)
-                    .setPlannedLenght(val);
-                Provider.of<DataProviders>(context, listen: false)
-                    .setPlannedDividedLenght(int.parse(val));
-                break;
-              default:
-            }
+            Provider.of<DataProviders>(context, listen: false)
+                .setPlannedLenght(val);
+            Provider.of<DataProviders>(context, listen: false)
+                .setPlannedDividedLenght(int.parse(val));
           } else {
-            switch (widget.selectPosition) {
-              case 'firstRow':
-                Provider.of<DataProviders>(context, listen: false)
-                    .setPlannedLenght(
-                  Provider.of<DataProviders>(context, listen: false)
-                      .plannedLenght,
-                );
-                break;
-              default:
-            }
+            Provider.of<DataProviders>(context, listen: false).setPlannedLenght(
+              Provider.of<DataProviders>(context, listen: false).plannedLenght,
+            );
           }
         },
       ),

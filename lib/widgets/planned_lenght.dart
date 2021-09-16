@@ -1,8 +1,8 @@
-import 'package:fence_drawing/providers/content_row_porviders.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../custom_text_field.dart';
+import '../providers/content_row_porviders.dart';
+import 'text_field_planned.dart';
 
 class PlannedLenght extends StatefulWidget {
   const PlannedLenght({
@@ -29,10 +29,7 @@ class _PlannedLenghtState extends State<PlannedLenght> {
             textAlign: TextAlign.center,
           ),
         ),
-        // const SizedBox(width: 50),
-        const CustomTextField(
-          selectPosition: 'firstRow',
-        ),
+        const PlannedLengthTextField(),
         Text(
           '  mm',
           style: Theme.of(context).textTheme.headline2,
