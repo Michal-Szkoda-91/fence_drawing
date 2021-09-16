@@ -1,6 +1,8 @@
+import 'package:fence_drawing/widgets/actual_length.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/content_container_widgets/planned_lenght.dart';
+import '../widgets/till_end_length.dart';
+import '../widgets/planned_lenght.dart';
 
 class ContentContainer extends StatelessWidget {
   const ContentContainer({
@@ -14,24 +16,13 @@ class ContentContainer extends StatelessWidget {
       height: double.infinity,
       color: Theme.of(context).primaryColor,
       child: Column(
-        children: [
-          const PlannedLenght(),
-          Row(
-            children: [
-              Text(
-                'Pozostało do końca',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Text(
-                'Obecna długość ogrodzenia',
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ],
-          ),
+        children: const [
+          SizedBox(height: 20),
+          PlannedLenght(),
+          SizedBox(height: 20),
+          TillEndLenght(),
+          SizedBox(height: 20),
+          ActualLenght(),
         ],
       ),
     );
