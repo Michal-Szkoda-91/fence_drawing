@@ -16,8 +16,7 @@ class PlannedLenght extends StatefulWidget {
 class _PlannedLenghtState extends State<PlannedLenght> {
   @override
   Widget build(BuildContext context) {
-    var dividedLength =
-        Provider.of<DataProviders>(context).plannedDividedLenght;
+    var dividedLength = Provider.of<DataProviders>(context).plannedLenght;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -34,9 +33,8 @@ class _PlannedLenghtState extends State<PlannedLenght> {
           '  mm',
           style: Theme.of(context).textTheme.headline2,
         ),
-        const SizedBox(width: 50),
         SizedBox(
-          width: 140,
+          width: 120,
           child: Text(
             '${(dividedLength / 1000)}',
             style: Theme.of(context)

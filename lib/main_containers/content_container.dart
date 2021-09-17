@@ -12,7 +12,7 @@ class ContentContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 300,
+      width: MediaQuery.of(context).size.width - 350,
       height: double.infinity,
       color: Theme.of(context).primaryColor,
       child: Column(

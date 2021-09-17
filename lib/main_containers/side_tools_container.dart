@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/elemenet_list.dart';
+
 class SideToolsContainer extends StatelessWidget {
   const SideToolsContainer({
     Key? key,
@@ -12,14 +14,14 @@ class SideToolsContainer extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).backgroundColor,
-            offset: const Offset(0, 20),
-            blurRadius: 14,
-            spreadRadius: 14,
+            blurRadius: 5,
+            spreadRadius: 6,
           ),
         ],
       ),
-      width: 300,
+      width: 350,
       height: double.infinity,
+      child: const ElementList(),
     );
   }
 }
