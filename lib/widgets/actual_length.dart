@@ -43,6 +43,7 @@ class _ActualLenghtState extends State<ActualLenght> {
             style: Theme.of(context).textTheme.headline2!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         Text(

@@ -43,6 +43,7 @@ class _TillEndLenghtState extends State<TillEndLenght> {
             style: Theme.of(context).textTheme.headline2!.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         Text(

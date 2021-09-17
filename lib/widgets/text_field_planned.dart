@@ -33,7 +33,7 @@ class _PlannedLengthTextFieldState extends State<PlannedLengthTextField> {
           fillColor: Theme.of(context).cardColor,
           filled: true,
           //specific settings
-          errorStyle: Theme.of(context).textTheme.headline6,
+          errorStyle: Theme.of(context).textTheme.headline3,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Theme.of(context).backgroundColor,

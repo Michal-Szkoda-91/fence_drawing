@@ -1,4 +1,5 @@
 import 'package:desktop_window/desktop_window.dart';
+import 'package:fence_drawing/models/element_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -40,16 +41,23 @@ class MyApp extends StatelessWidget {
             fontSize: 25,
             color: Colors.grey[300],
           ),
-          headline6: TextStyle(
+          headline3: TextStyle(
             fontSize: 15,
             color: Colors.red.shade800,
             fontWeight: FontWeight.w600,
+          ),
+          headline4: TextStyle(
+            fontSize: 20,
+            color: Colors.grey[300],
           ),
         ),
       ),
       home: MultiProvider(providers: [
         ChangeNotifierProvider(
           create: (_) => DataProviders(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ElementModelProvider(),
         )
       ], child: const MainWindow()),
     );
