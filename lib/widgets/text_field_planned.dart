@@ -19,7 +19,8 @@ class _PlannedLengthTextFieldState extends State<PlannedLengthTextField> {
       width: 140,
       height: 50,
       child: TextFormField(
-        initialValue: Provider.of<DataProviders>(context).plannedLenght,
+        initialValue:
+            Provider.of<DataProviders>(context).plannedLenght.toString(),
         textAlign: TextAlign.center,
         style: Theme.of(context)
             .textTheme
@@ -65,9 +66,7 @@ class _PlannedLengthTextFieldState extends State<PlannedLengthTextField> {
         onChanged: (val) {
           if (_numberRegExp.hasMatch(val)) {
             Provider.of<DataProviders>(context, listen: false)
-                .setPlannedLenght(val);
-            Provider.of<DataProviders>(context, listen: false)
-                .setPlannedDividedLenght(int.parse(val));
+                .setPlannedLenght(int.parse(val));
           } else {
             Provider.of<DataProviders>(context, listen: false).setPlannedLenght(
               Provider.of<DataProviders>(context, listen: false).plannedLenght,
