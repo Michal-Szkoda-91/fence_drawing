@@ -17,12 +17,14 @@ class ContentContainer extends StatelessWidget {
       color: Theme.of(context).primaryColor,
       child: Column(
         children: const [
+          Expanded(flex: 1, child: SizedBox()),
           SizedBox(height: 20),
           PlannedLenght(),
           SizedBox(height: 20),
           TillEndLenght(),
           SizedBox(height: 20),
           ActualLenght(),
+          Expanded(flex: 4, child: SizedBox()),
         ],
       ),
     );

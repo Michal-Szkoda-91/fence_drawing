@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         cardColor: Colors.grey.shade600,
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: Colors.amber,
+          primary: Colors.grey.shade400,
         ),
         fontFamily: 'Rajdhani',
         textTheme: TextTheme(
