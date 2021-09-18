@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 class ElementModel {
   String name;
   int lenght;
-  // var shape ????
   bool scalable;
   Color color;
   IconData icon;
@@ -19,23 +18,13 @@ class ElementModel {
     required this.color,
     required this.icon,
   });
-
-  void setLength(int val) {
-    lenght = val;
-  }
-
-  void addLenght(BuildContext context) {
-    var data = Provider.of<DataProviders>(context);
-    int _lenght = data.actualLenght + lenght;
-    data.setactualLenght(_lenght);
-  }
 }
 
 class ElementModelProvider with ChangeNotifier {
   List elemnt = [
     ElementModel(
       name: 'Przerwa',
-      scalable: false,
+      scalable: true,
       lenght: 20,
       color: Colors.red,
       icon: CommunityMaterialIcons.code_brackets,
@@ -49,28 +38,28 @@ class ElementModelProvider with ChangeNotifier {
     ),
     ElementModel(
       name: 'Przęsło',
-      scalable: false,
+      scalable: true,
       lenght: 2000,
       color: Colors.white,
       icon: CommunityMaterialIcons.gate,
     ),
     ElementModel(
       name: 'Brama',
-      scalable: false,
+      scalable: true,
       lenght: 4000,
-      color: Colors.white38,
+      color: Colors.grey.shade600,
       icon: CommunityMaterialIcons.gate_open,
     ),
     ElementModel(
       name: 'Furtka',
-      scalable: false,
+      scalable: true,
       lenght: 1200,
       color: Colors.yellow,
       icon: CommunityMaterialIcons.door,
     ),
     ElementModel(
       name: 'Furtka - śmietnik',
-      scalable: false,
+      scalable: true,
       lenght: 1200,
       color: Colors.orange.shade900,
       icon: CommunityMaterialIcons.trash_can_outline,
@@ -91,7 +80,23 @@ class ElementModelProvider with ChangeNotifier {
     ),
   ];
 
+  void setLenght(int lenght, int index) {
+    elemnt[index].lenght = lenght;
+    notifyListeners();
+  }
+
   List<ElementModel> get elementModelList {
     return [...elemnt];
+  }
+
+  List createdElement = [];
+
+  List<ElementModel> get createdElementList {
+    return [...createdElement];
+  }
+
+  void addElement(ElementModel elementModel) {
+    createdElement.add(elementModel);
+    notifyListeners();
   }
 }
