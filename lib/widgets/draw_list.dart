@@ -30,27 +30,50 @@ class _DrawListState extends State<DrawList> {
         itemCount: data.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return SizedBox(
-            width: data[index].lenght > 30 ? data[index].lenght * 1.0 / 10 : 30,
-            child: Column(
-              children: [
-                Text(
-                  data[index].lenght.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline4!
-                      .copyWith(fontSize: 15),
+          return Row(
+            children: [
+              SizedBox(
+                width: data[index].lenght * 1.0 / 40 + 20,
+                child: Column(
+                  children: [
+                    Text(
+                      (index + 1).toString(),
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      data[index].lenght.toString(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(fontSize: 15),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Divider(
+                      color: data[index].color,
+                      thickness: 5,
+                    ),
+                    Icon(
+                      data[index].icon,
+                      color: data[index].color,
+                    ),
+                  ],
                 ),
-                Divider(
-                  color: data[index].color,
-                  thickness: 5,
+              ),
+              Container(
+                height: 60,
+                decoration: BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
-                Icon(
-                  data[index].icon,
-                  color: data[index].color,
-                ),
-              ],
-            ),
+              )
+            ],
           );
         },
       ),
