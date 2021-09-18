@@ -12,9 +12,14 @@ class Datas {
 
 class DataProviders with ChangeNotifier {
   final Datas _datas = Datas(
-    plannedLenght: 2000,
-    actualLenght: 100,
+    plannedLenght: 20000,
+    actualLenght: 0,
   );
+
+  void addActualLenght(int lenght) {
+    _datas.actualLenght += lenght;
+    notifyListeners();
+  }
 
   //PlannedLength
   ///////////////////////////////////////////////////////////////

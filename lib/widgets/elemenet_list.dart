@@ -1,4 +1,5 @@
 import 'package:draggable_scrollbar/draggable_scrollbar.dart';
+import 'package:fence_drawing/providers/content_row_porviders.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,8 @@ class _ElementListState extends State<ElementList> {
                 onTap: () {
                   Provider.of<ElementModelProvider>(context, listen: false)
                       .addElement(data[index]);
+                  Provider.of<DataProviders>(context, listen: false)
+                      .addActualLenght(data[index].lenght);
                 },
                 child: SizedBox(
                   width: double.infinity,
