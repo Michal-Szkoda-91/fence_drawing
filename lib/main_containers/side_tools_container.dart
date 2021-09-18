@@ -19,7 +19,7 @@ class SideToolsContainer extends StatelessWidget {
           ),
         ],
       ),
-      width: 350,
+      width: 370,
       height: double.infinity,
       child: const ElementList(),
     );
