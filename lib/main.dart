@@ -10,7 +10,7 @@ import 'providers/content_row_porviders.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  DesktopWindow.setMinWindowSize(const Size(1200, 800));
+  DesktopWindow.setMinWindowSize(const Size(1250, 700));
   runApp(const MyApp());
 }
 
