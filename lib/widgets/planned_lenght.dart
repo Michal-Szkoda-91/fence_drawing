@@ -21,6 +21,7 @@ class _PlannedLenghtState extends State<PlannedLenght> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
+          flex: 4,
           child: Text(
             'Planowana długość ogrodzenia',
             style: Theme.of(context).textTheme.headline2,
@@ -49,7 +50,7 @@ class _PlannedLenghtState extends State<PlannedLenght> {
           '  m',
           style: Theme.of(context).textTheme.headline2,
         ),
-        const SizedBox(width: 50),
+        const Expanded(flex: 1, child: SizedBox()),
       ],
     );
   }

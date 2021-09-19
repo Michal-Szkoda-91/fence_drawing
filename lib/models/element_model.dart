@@ -77,9 +77,9 @@ class ElementModelProvider with ChangeNotifier {
     return [...elemnt];
   }
 
-  final List createdElementlist = [];
+  List createdElementlist = [];
 
-  List<ElementModel> get createdElementList {
+  List<ElementModel> get createdElementListget {
     return [...createdElementlist];
   }
 
@@ -92,6 +92,16 @@ class ElementModelProvider with ChangeNotifier {
         icon: el.icon,
       ),
     );
+    notifyListeners();
+  }
+
+  void clearCreatedList() {
+    createdElementlist.clear();
+    notifyListeners();
+  }
+
+  void removeLastElement() {
+    createdElementlist.removeLast();
     notifyListeners();
   }
 }

@@ -10,6 +10,7 @@ class SideToolsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(bottom: 4, top: 4),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(

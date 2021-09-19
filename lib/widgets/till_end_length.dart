@@ -20,6 +20,7 @@ class _TillEndLenghtState extends State<TillEndLenght> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
+          flex: 4,
           child: Text(
             'Długość do końca ogrodzenia',
             style: Theme.of(context).textTheme.headline2,
@@ -66,7 +67,7 @@ class _TillEndLenghtState extends State<TillEndLenght> {
           '  m',
           style: Theme.of(context).textTheme.headline2,
         ),
-        const SizedBox(width: 50),
+        const Expanded(flex: 1, child: SizedBox()),
       ],
     );
   }

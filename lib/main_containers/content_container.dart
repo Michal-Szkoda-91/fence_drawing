@@ -1,8 +1,9 @@
-import 'package:fence_drawing/widgets/actual_length.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/till_end_length.dart';
 import '../widgets/planned_lenght.dart';
+import '../widgets/actual_length.dart';
+import '../widgets/reset_buttons.dart';
 
 class ContentContainer extends StatelessWidget {
   const ContentContainer({
@@ -18,13 +19,15 @@ class ContentContainer extends StatelessWidget {
       child: Column(
         children: const [
           Expanded(flex: 1, child: SizedBox()),
-          SizedBox(height: 20),
+          // SizedBox(height: 20),
           PlannedLenght(),
-          SizedBox(height: 20),
+          // SizedBox(height: 20),
+          Expanded(flex: 1, child: SizedBox()),
           TillEndLenght(),
-          SizedBox(height: 20),
+          // SizedBox(height: 20),
+          Expanded(flex: 1, child: SizedBox()),
           ActualLenght(),
-          Expanded(flex: 4, child: SizedBox()),
+          Expanded(flex: 4, child: ResetButtons()),
         ],
       ),
     );
