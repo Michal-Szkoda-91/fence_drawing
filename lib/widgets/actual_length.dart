@@ -20,6 +20,7 @@ class _ActualLenghtState extends State<ActualLenght> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
+          flex: 4,
           child: Text(
             'Aktualna Długość Ogrodzenia',
             style: Theme.of(context).textTheme.headline2,
@@ -66,7 +67,7 @@ class _ActualLenghtState extends State<ActualLenght> {
           '  m',
           style: Theme.of(context).textTheme.headline2,
         ),
-        const SizedBox(width: 50),
+        const Expanded(flex: 1, child: SizedBox()),
       ],
     );
   }

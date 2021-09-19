@@ -21,6 +21,16 @@ class DataProviders with ChangeNotifier {
     notifyListeners();
   }
 
+  void clearActualLength() {
+    _datas.actualLenght = 0;
+    notifyListeners();
+  }
+
+  void substringLastElementLenght(int lenght) {
+    _datas.actualLenght -= lenght;
+    notifyListeners();
+  }
+
   //PlannedLength
   ///////////////////////////////////////////////////////////////
   int get plannedLenght {

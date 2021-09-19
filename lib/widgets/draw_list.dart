@@ -17,7 +17,7 @@ class _DrawListState extends State<DrawList> {
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ElementModelProvider>(context).createdElementList;
+    List data = Provider.of<ElementModelProvider>(context).createdElementListget;
     return RawScrollbar(
       isAlwaysShown: true,
       thumbColor: Theme.of(context).cardColor,
