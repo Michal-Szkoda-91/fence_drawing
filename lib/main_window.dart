@@ -4,6 +4,7 @@ import 'main_containers/bottom_container.dart';
 import 'main_containers/content_container.dart';
 import 'main_containers/side_tools_container.dart';
 import 'main_containers/title_app_container.dart';
+import 'widgets/menu_container.dart';
 
 class MainWindow extends StatelessWidget {
   const MainWindow({
@@ -13,20 +14,26 @@ class MainWindow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          const TitleAppContainer(),
-          Expanded(
-            child: Row(
-              children: const [
-                ContentContainer(),
-                SideToolsContainer(),
-              ],
-            ),
+          Column(
+            children: [
+              const TitleAppContainer(),
+              Expanded(
+                child: Row(
+                  children: const [
+                    ContentContainer(),
+                    SideToolsContainer(),
+                  ],
+                ),
+              ),
+              const BottomContainer(),
+            ],
           ),
-          const BottomContainer(),
+          const MenuContainer(),
         ],
       ),
     );
   }
 }
+

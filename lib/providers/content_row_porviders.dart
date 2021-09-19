@@ -72,4 +72,17 @@ class DataProviders with ChangeNotifier {
     title = val;
     notifyListeners();
   }
+
+  //
+  //
+  // menu opacity
+  bool menuOpacity = false;
+  bool get getOpcity {
+    return menuOpacity;
+  }
+
+  void setManuOpacity(bool opacity) {
+    menuOpacity = opacity;
+    notifyListeners();
+  }
 }
