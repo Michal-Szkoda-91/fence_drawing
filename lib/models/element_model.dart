@@ -7,12 +7,14 @@ class ElementModel {
   int lenght;
   Color color;
   IconData icon;
+  int totalLenght;
 
   ElementModel({
     required this.name,
     required this.lenght,
     required this.color,
     required this.icon,
+    required this.totalLenght,
   });
 }
 
@@ -23,48 +25,56 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 20,
       color: Colors.red.shade800,
       icon: CommunityMaterialIcons.code_brackets,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Słupek',
       lenght: 20,
       color: Colors.black,
       icon: CommunityMaterialIcons.cube_outline,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Przęsło',
       lenght: 2000,
       color: Colors.white,
       icon: CommunityMaterialIcons.gate,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Brama',
       lenght: 4000,
       color: Colors.grey.shade600,
       icon: CommunityMaterialIcons.gate_open,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Furtka',
       lenght: 1200,
       color: Colors.yellow,
       icon: CommunityMaterialIcons.door,
+      totalLenght: 0,
     ),
     ElementModel(
-      name: 'Furtka - śmietnik',
+      name: 'Furtka śmie.',
       lenght: 1200,
       color: Colors.orange.shade900,
       icon: CommunityMaterialIcons.trash_can_outline,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Zawias',
       lenght: 50,
       color: Colors.green,
       icon: CommunityMaterialIcons.gate_arrow_right,
+      totalLenght: 0,
     ),
     ElementModel(
       name: 'Klamka',
       lenght: 100,
       color: Colors.blue,
       icon: CommunityMaterialIcons.format_text_wrapping_wrap,
+      totalLenght: 0,
     ),
   ];
 
@@ -83,13 +93,14 @@ class ElementModelProvider with ChangeNotifier {
     return [...createdElementlist];
   }
 
-  void addElement(ElementModel el) {
+  void addElement(ElementModel el, int lenght) {
     createdElementlist.add(
       ElementModel(
         name: el.name,
         lenght: el.lenght,
         color: el.color,
         icon: el.icon,
+        totalLenght: lenght,
       ),
     );
     notifyListeners();
@@ -105,7 +116,9 @@ class ElementModelProvider with ChangeNotifier {
     notifyListeners();
   }
   //
-  //SLider metods
+  //SLider metods//
+  //
+  //
 
   double sliderSensitive = 2;
   int divider = 4;

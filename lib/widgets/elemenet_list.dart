@@ -20,6 +20,9 @@ class _ElementListState extends State<ElementList> {
   @override
   Widget build(BuildContext context) {
     List data = Provider.of<ElementModelProvider>(context).elementModelList;
+    List createdList =
+        Provider.of<ElementModelProvider>(context).createdElementlist;
+    var dataProvider = Provider.of<DataProviders>(context);
     return RawScrollbar(
       isAlwaysShown: true,
       thumbColor: Theme.of(context).cardColor,
@@ -33,7 +36,7 @@ class _ElementListState extends State<ElementList> {
         itemCount: data.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
             child: Material(
               color: Theme.of(context).primaryColor,
               child: InkWell(
@@ -41,9 +44,11 @@ class _ElementListState extends State<ElementList> {
                 hoverColor: Colors.black26,
                 onTap: () {
                   Provider.of<ElementModelProvider>(context, listen: false)
-                      .addElement(data[index]);
-                  Provider.of<DataProviders>(context, listen: false)
-                      .addActualLenght(data[index].lenght);
+                      .addElement(
+                    data[index],
+                    (data[index].lenght + dataProvider.actualLenght),
+                  );
+                  dataProvider.addActualLenght(data[index].lenght);
                 },
                 child: SizedBox(
                   width: double.infinity,
@@ -53,7 +58,7 @@ class _ElementListState extends State<ElementList> {
                     children: [
                       const Spacer(),
                       SizedBox(
-                        width: 140,
+                        width: 100,
                         child: Text(
                           data[index].name,
                           style: Theme.of(context).textTheme.headline4,
@@ -69,7 +74,7 @@ class _ElementListState extends State<ElementList> {
                       const SizedBox(width: 15),
                       SizedBox(
                         height: 40,
-                        width: 100,
+                        width: 90,
                         child: TextFormField(
                           textAlignVertical: TextAlignVertical.top,
                           initialValue: data[index].lenght.toString(),
@@ -77,7 +82,7 @@ class _ElementListState extends State<ElementList> {
                           style:
                               Theme.of(context).textTheme.headline2!.copyWith(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 22,
+                                    fontSize: 20,
                                   ),
                           cursorColor: Theme.of(context).colorScheme.secondary,
                           decoration: InputDecoration(
@@ -122,10 +127,21 @@ class _ElementListState extends State<ElementList> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        'mm',
+                        'mm ',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(
+                        width: 60,
+                        child: Text(
+                          'szt. ${createdList.where((element) => element.name == data[index].name).length.toString()}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

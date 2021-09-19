@@ -48,12 +48,12 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           headline4: TextStyle(
-            fontSize: 20,
+            fontSize: 19,
             color: Colors.grey[300],
           ),
         ),
       ),
-      
+
       //
       //
       //
