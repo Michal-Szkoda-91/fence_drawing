@@ -33,10 +33,10 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: 'Rajdhani',
         textTheme: TextTheme(
-          headline1: const TextStyle(
+          headline1: TextStyle(
             fontSize: 45,
-            color: Colors.red,
-            fontWeight: FontWeight.bold,
+            color: Colors.grey[300],
+            fontWeight: FontWeight.w600,
           ),
           headline2: TextStyle(
             fontSize: 25,

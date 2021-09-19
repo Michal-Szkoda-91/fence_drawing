@@ -28,7 +28,7 @@ class _SliderMagnifierState extends State<SliderMagnifier> {
           },
         ),
         Text(
-          "Zoom x ${data.getDivider}",
+          "Zmniejszenie x ${data.getDivider}",
           style: Theme.of(context).textTheme.headline4,
         ),
       ],
