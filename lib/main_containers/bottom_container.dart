@@ -12,16 +12,16 @@ class BottomContainer extends StatelessWidget {
     return Container(
       color: Theme.of(context).primaryColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         child: Container(
           width: double.infinity,
-          height: 110,
+          height: 150,
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
             border: Border(
               left: BorderSide(
                 color: Theme.of(context).colorScheme.primary,
-                width: 2,
+                width: 3,
               ),
             ),
           ),

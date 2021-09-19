@@ -37,7 +37,7 @@ class _DrawListState extends State<DrawList> {
                 width: data[index].lenght *
                         1.0 /
                         Provider.of<ElementModelProvider>(context).getDivider +
-                    20,
+                    43,
                 child: Column(
                   children: [
                     Text(
@@ -53,7 +53,7 @@ class _DrawListState extends State<DrawList> {
                       style: Theme.of(context)
                           .textTheme
                           .headline4!
-                          .copyWith(fontSize: 15),
+                          .copyWith(fontSize: 18),
                       overflow: TextOverflow.ellipsis,
                     ),
                     Divider(
@@ -64,11 +64,20 @@ class _DrawListState extends State<DrawList> {
                       data[index].icon,
                       color: data[index].color,
                     ),
+                    const SizedBox(height: 10),
+                    Text(
+                      data[index].totalLenght.toString(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(fontSize: 16, letterSpacing: 0.3),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ],
                 ),
               ),
               Container(
-                height: 60,
+                height: 100,
                 decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
