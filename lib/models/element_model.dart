@@ -104,4 +104,53 @@ class ElementModelProvider with ChangeNotifier {
     createdElementlist.removeLast();
     notifyListeners();
   }
+  //
+  //SLider metods
+
+  double sliderSensitive = 2;
+  int divider = 4;
+
+  double get getSliderSensitive {
+    return sliderSensitive;
+  }
+
+  int get getDivider {
+    return divider;
+  }
+
+  void setSliderSensitive(int val) {
+    switch (val) {
+      case 0:
+        sliderSensitive = 0;
+        divider = 1;
+        break;
+      case 1:
+        sliderSensitive = 1;
+        divider = 2;
+        break;
+      case 2:
+        sliderSensitive = 2;
+        divider = 4;
+        break;
+      case 3:
+        sliderSensitive = 3;
+        divider = 8;
+        break;
+      case 4:
+        sliderSensitive = 4;
+        divider = 16;
+        break;
+      case 5:
+        sliderSensitive = 5;
+        divider = 32;
+        break;
+      case 6:
+        sliderSensitive = 6;
+        divider = 64;
+        break;
+      default:
+    }
+    // sliderSensitive = val;
+    notifyListeners();
+  }
 }
