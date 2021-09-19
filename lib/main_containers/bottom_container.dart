@@ -10,7 +10,15 @@ class BottomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        border: Border(
+          top: BorderSide(
+            color: Theme.of(context).backgroundColor,
+            width: 2,
+          ),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         child: Container(

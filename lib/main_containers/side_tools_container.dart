@@ -10,15 +10,15 @@ class SideToolsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 4, top: 4),
+      padding: const EdgeInsets.only(bottom: 3, top: 3),
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
+        color: Theme.of(context).primaryColor,
+        border: Border(
+          left: BorderSide(
             color: Theme.of(context).backgroundColor,
-            blurRadius: 5,
-            spreadRadius: 6,
+            width: 2,
           ),
-        ],
+        ),
       ),
       width: 370,
       height: double.infinity,
