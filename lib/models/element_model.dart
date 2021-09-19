@@ -120,8 +120,8 @@ class ElementModelProvider with ChangeNotifier {
   //
   //
 
-  double sliderSensitive = 2;
-  int divider = 4;
+  double sliderSensitive = 3;
+  int divider = 8;
 
   double get getSliderSensitive {
     return sliderSensitive;

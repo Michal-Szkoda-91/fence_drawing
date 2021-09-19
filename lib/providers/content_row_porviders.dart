@@ -58,4 +58,18 @@ class DataProviders with ChangeNotifier {
     _datas.actualLenght = length;
     notifyListeners();
   }
+
+  //Title providers
+  //
+  //
+  //
+  String title = "Płot nr 1";
+  String get getTitle {
+    return title;
+  }
+
+  void setTitle(String val) {
+    title = val;
+    notifyListeners();
+  }
 }

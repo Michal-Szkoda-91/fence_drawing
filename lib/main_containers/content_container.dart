@@ -25,14 +25,13 @@ class ContentContainer extends StatelessWidget {
           const TillEndLenght(),
           const Expanded(flex: 1, child: SizedBox()),
           const ActualLenght(),
-          Expanded(
-              flex: 4,
-              child: Row(
-                children: const [
-                  SliderMagnifier(),
-                  Expanded(child: ResetButtons()),
-                ],
-              )),
+          const Expanded(flex: 8, child: SizedBox()),
+          Row(
+            children: const [
+              SliderMagnifier(),
+              Expanded(child: ResetButtons()),
+            ],
+          ),
         ],
       ),
     );
