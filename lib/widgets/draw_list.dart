@@ -17,7 +17,8 @@ class _DrawListState extends State<DrawList> {
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ElementModelProvider>(context).createdElementListget;
+    List data =
+        Provider.of<ElementModelProvider>(context).createdElementListget;
     return RawScrollbar(
       isAlwaysShown: true,
       thumbColor: Theme.of(context).cardColor,
@@ -33,7 +34,10 @@ class _DrawListState extends State<DrawList> {
           return Row(
             children: [
               SizedBox(
-                width: data[index].lenght * 1.0 / 40 + 20,
+                width: data[index].lenght *
+                        1.0 /
+                        Provider.of<ElementModelProvider>(context).getDivider +
+                    20,
                 child: Column(
                   children: [
                     Text(
