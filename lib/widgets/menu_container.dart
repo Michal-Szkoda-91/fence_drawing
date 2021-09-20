@@ -1,12 +1,16 @@
+import 'package:fence_drawing/models/pdf_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:printing/printing.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/content_row_porviders.dart';
 
 class MenuContainer extends StatelessWidget {
-  const MenuContainer({
+  MenuContainer({
     Key? key,
   }) : super(key: key);
+
+  final PDFHelper _pdfHelper = PDFHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +27,41 @@ class MenuContainer extends StatelessWidget {
                 width: 250,
                 height: 350,
                 color: Theme.of(context).cardColor,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(
+                            Colors.black38,
+                          ),
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.all(10),
+                          ),
+                          textStyle: MaterialStateProperty.all(
+                            Theme.of(context).textTheme.headline2!.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        label: const Text('Drukuj do PDF'),
+                        onPressed: () {
+                          _pdfHelper.generatePdf('hej');
+                        },
+                        icon: Icon(
+                          Icons.picture_as_pdf,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           : const Center(),
