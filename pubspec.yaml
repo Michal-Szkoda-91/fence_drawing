@@ -35,7 +35,9 @@ dependencies:
   desktop: ^2.0.4
   provider: ^6.0.0
   draggable_scrollbar: ^0.1.0
+  printing: ^5.6.0
   community_material_icon: ^5.9.55
+  path_provider: ^2.0.5
 
 
 

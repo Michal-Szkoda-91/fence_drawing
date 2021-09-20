@@ -30,10 +30,9 @@ class MainWindow extends StatelessWidget {
               const BottomContainer(),
             ],
           ),
-          const MenuContainer(),
+          MenuContainer(),
         ],
       ),
     );
   }
 }
-
