@@ -6,6 +6,7 @@ class ElementModel {
   String name;
   int lenght;
   Color color;
+  String hexColor;
   IconData icon;
   int totalLenght;
 
@@ -15,6 +16,7 @@ class ElementModel {
     required this.color,
     required this.icon,
     required this.totalLenght,
+    required this.hexColor,
   });
 }
 
@@ -24,6 +26,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Przerwa',
       lenght: 20,
       color: Colors.red.shade800,
+      hexColor: 'f00',
       icon: CommunityMaterialIcons.code_brackets,
       totalLenght: 0,
     ),
@@ -31,6 +34,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Słupek',
       lenght: 20,
       color: Colors.black,
+      hexColor: '000',
       icon: CommunityMaterialIcons.cube_outline,
       totalLenght: 0,
     ),
@@ -38,6 +42,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Przęsło',
       lenght: 2000,
       color: Colors.white,
+      hexColor: 'e0e0e0',
       icon: CommunityMaterialIcons.gate,
       totalLenght: 0,
     ),
@@ -45,6 +50,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Brama',
       lenght: 4000,
       color: Colors.grey.shade600,
+      hexColor: 'a19a9a',
       icon: CommunityMaterialIcons.gate_open,
       totalLenght: 0,
     ),
@@ -52,6 +58,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Furtka',
       lenght: 1200,
       color: Colors.yellow,
+      hexColor: 'ffee00',
       icon: CommunityMaterialIcons.door,
       totalLenght: 0,
     ),
@@ -59,6 +66,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Furtka śmie.',
       lenght: 1200,
       color: Colors.orange.shade900,
+      hexColor: 'ff8c12',
       icon: CommunityMaterialIcons.trash_can_outline,
       totalLenght: 0,
     ),
@@ -66,6 +74,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Zawias',
       lenght: 50,
       color: Colors.green,
+      hexColor: '00d612',
       icon: CommunityMaterialIcons.gate_arrow_right,
       totalLenght: 0,
     ),
@@ -73,6 +82,7 @@ class ElementModelProvider with ChangeNotifier {
       name: 'Klamka',
       lenght: 100,
       color: Colors.blue,
+      hexColor: '0281e8',
       icon: CommunityMaterialIcons.format_text_wrapping_wrap,
       totalLenght: 0,
     ),
@@ -99,6 +109,7 @@ class ElementModelProvider with ChangeNotifier {
         name: el.name,
         lenght: el.lenght,
         color: el.color,
+        hexColor: el.hexColor,
         icon: el.icon,
         totalLenght: lenght,
       ),
