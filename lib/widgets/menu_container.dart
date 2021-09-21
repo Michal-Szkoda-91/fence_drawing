@@ -52,7 +52,7 @@ class MenuContainer extends StatelessWidget {
                         ),
                         label: const Text('Drukuj do PDF'),
                         onPressed: () {
-                          _pdfHelper.generatePdf('hej');
+                          _pdfHelper.generatePdf(context);
                         },
                         icon: Icon(
                           Icons.picture_as_pdf,
