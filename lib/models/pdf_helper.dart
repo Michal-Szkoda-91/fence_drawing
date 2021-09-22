@@ -16,6 +16,7 @@ class PDFHelper {
     final font = await PdfGoogleFonts.nunitoExtraLight();
     var dataproviders = Provider.of<DataProviders>(context, listen: false);
     var elementData = Provider.of<ElementModelProvider>(context, listen: false);
+    var elementCounts = elementData.createdElementListget.length;
 
     final przesloImage =
         await imageFromAssetBundle('assets/images/przeslo.png');
@@ -67,6 +68,7 @@ class PDFHelper {
 
     pdf.addPage(
       //Here you have to print raport
+
       Page(
         pageFormat: PdfPageFormat.a4.landscape,
         margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
@@ -96,7 +98,6 @@ class PDFHelper {
                 ],
               ),
               SizedBox(height: 30),
-
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
@@ -104,9 +105,7 @@ class PDFHelper {
               // First 15 elements of list
               ListView.builder(
                 direction: Axis.horizontal,
-                itemCount: elementData.createdElementListget.length >= 15
-                    ? 15
-                    : elementData.createdElementListget.length,
+                itemCount: elementCounts >= 15 ? 15 : elementCounts,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
@@ -142,8 +141,11 @@ class PDFHelper {
                             Container(
                               width: 35,
                               height: 35,
-                              child: Image(returnImage(elementData
-                                  .createdElementListget[index].name)),
+                              child: Image(
+                                returnImage(
+                                  elementData.createdElementListget[index].name,
+                                ),
+                              ),
                             ),
                             Text(
                               elementData
@@ -180,12 +182,10 @@ class PDFHelper {
               // 15 - 30 elements of list
               Padding(
                   padding: const EdgeInsets.all(4),
-                  child: Divider(thickness: 1)),
+                  child: Divider(thickness: 0.2)),
               ListView.builder(
                 direction: Axis.horizontal,
-                itemCount: elementData.createdElementListget.length >= 30
-                    ? 15
-                    : elementData.createdElementListget.length - 15,
+                itemCount: elementCounts >= 30 ? 15 : elementCounts - 15,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
@@ -259,14 +259,14 @@ class PDFHelper {
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
               // 30 - 45 elements of list
-              Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: Divider(thickness: 1)),
+              elementCounts > 15
+                  ? Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Divider(thickness: 0.2))
+                  : Center(),
               ListView.builder(
                 direction: Axis.horizontal,
-                itemCount: elementData.createdElementListget.length >= 45
-                    ? 15
-                    : elementData.createdElementListget.length - 30,
+                itemCount: elementCounts >= 45 ? 15 : elementCounts - 30,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
@@ -335,14 +335,13 @@ class PDFHelper {
                   );
                 },
               ),
-              Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: Divider(thickness: 1)),
+
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
               // ////////////////////////////////////////////////
               // info about fence
+              SizedBox(height: 30),
               Text(
                 'Łączna długość ogrodzenia: ${dataproviders.actualLenght.toString()} mm  -  ${dataproviders.actualLenght / 1000} m',
                 style: TextStyle(
@@ -351,9 +350,7 @@ class PDFHelper {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(2),
-                  child: Divider(thickness: 1)),
+              SizedBox(height: 30),
               ListView.builder(
                 itemCount: elementData.elementModelList.length,
                 direction: Axis.horizontal,
@@ -403,10 +400,6 @@ class PDFHelper {
         },
       ),
     );
-    // final output = Directory.current;
-    final file = File(r'C:\Users\Michal\Desktop\example.pdf');
-    // '${output.path}/example.pdf'); // nie jest doskonala, drukuje do folderu aplikacji
-    await file.writeAsBytes(await pdf.save());
     return pdf.save();
   }
 }

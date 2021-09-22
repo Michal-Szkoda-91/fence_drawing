@@ -1,8 +1,8 @@
-import 'package:fence_drawing/models/pdf_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:printing/printing.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/print_preview.dart';
+import '../models/pdf_helper.dart';
 import '../providers/content_row_porviders.dart';
 
 class MenuContainer extends StatelessWidget {
@@ -52,7 +52,15 @@ class MenuContainer extends StatelessWidget {
                         ),
                         label: const Text('Drukuj do PDF'),
                         onPressed: () {
-                          _pdfHelper.generatePdf(context);
+                          showDialog(
+                            context: context,
+                            builder: (ctx) {
+                              return PrintPreview(
+                                pdfHelper: _pdfHelper,
+                                ctx: context,
+                              );
+                            },
+                          );
                         },
                         icon: Icon(
                           Icons.picture_as_pdf,
