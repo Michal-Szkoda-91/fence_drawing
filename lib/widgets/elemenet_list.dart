@@ -49,6 +49,7 @@ class _ElementListState extends State<ElementList> {
                     (data[index].lenght + dataProvider.actualLenght),
                   );
                   dataProvider.addActualLenght(data[index].lenght);
+                  dataProvider.jumpToScroll(data[index].lenght);
                 },
                 child: SizedBox(
                   width: double.infinity,

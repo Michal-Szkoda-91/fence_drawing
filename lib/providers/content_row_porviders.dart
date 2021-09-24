@@ -85,4 +85,21 @@ class DataProviders with ChangeNotifier {
     menuOpacity = opacity;
     notifyListeners();
   }
+
+  //
+  //
+  //Controller of drawing list
+  final ScrollController _controller = ScrollController();
+  ScrollController get getController {
+    return _controller;
+  }
+
+  void jumpToScroll(int val) {
+    _controller.animateTo(
+      (_controller.position.maxScrollExtent + val + 43),
+      duration: const Duration(seconds: 1),
+      curve: Curves.easeIn,
+    );
+    notifyListeners();
+  }
 }

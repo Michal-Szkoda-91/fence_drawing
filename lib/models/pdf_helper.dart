@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:fence_drawing/providers/content_row_porviders.dart';
@@ -27,7 +26,6 @@ class PDFHelper {
     final klamkaImage = await imageFromAssetBundle('assets/images/klamka.png');
     final przerwaImage =
         await imageFromAssetBundle('assets/images/przerwa.png');
-
     final slupekImage = await imageFromAssetBundle('assets/images/slupek.png');
     final zawiasImage = await imageFromAssetBundle('assets/images/zawias.png');
     ImageProvider returnImage(String name) {
