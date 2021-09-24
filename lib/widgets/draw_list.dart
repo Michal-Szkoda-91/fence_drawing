@@ -1,3 +1,4 @@
+import 'package:fence_drawing/providers/content_row_porviders.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,12 +14,12 @@ class DrawList extends StatefulWidget {
 }
 
 class _DrawListState extends State<DrawList> {
-  final ScrollController _controller = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     List data =
         Provider.of<ElementModelProvider>(context).createdElementListget;
+    final _controller = Provider.of<DataProviders>(context).getController;
+
     return RawScrollbar(
       isAlwaysShown: true,
       thumbColor: Theme.of(context).cardColor,
