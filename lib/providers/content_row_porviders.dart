@@ -88,6 +88,19 @@ class DataProviders with ChangeNotifier {
 
   //
   //
+  // saveFile opacity
+  bool saveFileOpacity = false;
+  bool get getsaveFileOpcity {
+    return saveFileOpacity;
+  }
+
+  void setsaveFileOpacity(bool opacity) {
+    saveFileOpacity = opacity;
+    notifyListeners();
+  }
+
+  //
+  //
   //Controller of drawing list
   final ScrollController _controller = ScrollController();
   ScrollController get getController {

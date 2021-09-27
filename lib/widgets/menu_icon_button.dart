@@ -11,17 +11,28 @@ class MenuIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dataProviders = Provider.of<DataProviders>(context);
-    return Align(
-      alignment: Alignment.center,
-      child: IconButton(
-        onPressed: () {
-          dataProviders.setManuOpacity(true);
-        },
-        icon: Icon(
-          Icons.menu,
-          size: 30,
-          color: Theme.of(context).colorScheme.primary,
+    return OutlinedButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(
+          Colors.black26,
         ),
+        side: MaterialStateProperty.all(
+          BorderSide.none,
+        ),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.all(10),
+        ),
+        backgroundColor: MaterialStateProperty.all<Color>(
+          Theme.of(context).primaryColor,
+        ),
+      ),
+      onPressed: () {
+        dataProviders.setManuOpacity(true);
+      },
+      child: Icon(
+        Icons.menu,
+        color: Theme.of(context).colorScheme.secondary,
+        size: 30,
       ),
     );
   }
