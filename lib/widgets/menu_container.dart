@@ -68,6 +68,44 @@ class MenuContainer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        style: ButtonStyle(
+                          overlayColor: MaterialStateProperty.all(
+                            Colors.black38,
+                          ),
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.all(10),
+                          ),
+                          textStyle: MaterialStateProperty.all(
+                            Theme.of(context).textTheme.headline2!.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        label: const Text('Zapisz plik'),
+                        onPressed: () {
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (ctx) {
+                          //     return PrintPreview(
+                          //       pdfHelper: _pdfHelper,
+                          //       ctx: context,
+                          //     );
+                          //   },
+                          // );
+                        },
+                        icon: Icon(
+                          Icons.save,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
