@@ -17,7 +17,7 @@ class MenuContainer extends StatelessWidget {
     var dataProviders = Provider.of<DataProviders>(context);
     return Positioned(
       right: 10,
-      top: 20,
+      top: 0,
       child: dataProviders.menuOpacity
           ? MouseRegion(
               onExit: (event) {
@@ -88,17 +88,9 @@ class MenuContainer extends StatelessWidget {
                             Theme.of(context).primaryColor,
                           ),
                         ),
-                        label: const Text('Zapisz plik'),
+                        label: const Text('Pliki'),
                         onPressed: () {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (ctx) {
-                          //     return PrintPreview(
-                          //       pdfHelper: _pdfHelper,
-                          //       ctx: context,
-                          //     );
-                          //   },
-                          // );
+                          dataProviders.setsaveFileOpacity(true);
                         },
                         icon: Icon(
                           Icons.save,
