@@ -8,8 +8,11 @@ class FilePickerHelper {
   }
 
   Future<void> saveFile(String title, String data) async {
-    await initData();
     _localStorage.setString(title, data);
+  }
+
+  String loadFile(String key) {
+    return _localStorage.get(key);
   }
 
   Iterable<String> loadAllFiles() {
