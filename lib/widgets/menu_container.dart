@@ -16,8 +16,8 @@ class MenuContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     var dataProviders = Provider.of<DataProviders>(context);
     return Positioned(
-      right: 10,
-      top: 0,
+      right: 20,
+      top: 20,
       child: dataProviders.menuOpacity
           ? MouseRegion(
               onExit: (event) {

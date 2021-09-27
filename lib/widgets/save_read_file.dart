@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'save_button_container.dart';
 import '../providers/content_row_porviders.dart';
 import '../models/save_file_helper.dart';
+import 'saved_file_list.dart';
 
 class SaveReadFileScreen extends StatefulWidget {
   const SaveReadFileScreen({
@@ -17,18 +18,17 @@ class SaveReadFileScreen extends StatefulWidget {
 class _SaveReadFileScreenState extends State<SaveReadFileScreen> {
   final FilePickerHelper _filePickerHelper = FilePickerHelper();
   late Iterable<String> _keyList;
-  @override
+
   @override
   Widget build(BuildContext context) {
     var dataProviders = Provider.of<DataProviders>(context);
-
     return Positioned(
-      right: 60,
-      top: 0,
+      right: 20,
+      top: 20,
       child: dataProviders.saveFileOpacity
           ? MouseRegion(
               onExit: (event) {
-                dataProviders.setsaveFileOpacity(false);
+                // dataProviders.setsaveFileOpacity(false);
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -39,7 +39,7 @@ class _SaveReadFileScreenState extends State<SaveReadFileScreen> {
                   ),
                 ),
                 width: 500,
-                height: 600,
+                height: 500,
                 child: FutureBuilder(
                   future: _filePickerHelper.initData(),
                   builder: (context, snapshot) {
@@ -56,22 +56,16 @@ class _SaveReadFileScreenState extends State<SaveReadFileScreen> {
                           _keyList = _filePickerHelper.loadAllFiles();
                           return Column(
                             children: [
-                              const SaveButtonContainer(),
+                              SaveButtonContainer(
+                                  filePickerHelper: _filePickerHelper),
+                              Divider(
+                                color: Theme.of(context).backgroundColor,
+                                thickness: 3,
+                              ),
                               Expanded(
-                                child: Container(
-                                  color: Colors.blue,
-                                  child: ListView.builder(
-                                      itemCount: _filePickerHelper
-                                          .loadAllFiles()
-                                          .length,
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                          title: Text(
-                                            _keyList.elementAt(index),
-                                          ),
-                                        );
-                                      }),
-                                ),
+                                child: SavedFileList(
+                                    filePickerHelper: _filePickerHelper,
+                                    keyList: _keyList),
                               ),
                             ],
                           );

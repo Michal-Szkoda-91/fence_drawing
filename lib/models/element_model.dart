@@ -1,4 +1,3 @@
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +26,7 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 20,
       color: Colors.red.shade800,
       hexColor: 'f00',
-      icon: CommunityMaterialIcons.code_brackets,
+      icon: Icons.space_bar,
       totalLenght: 0,
     ),
     ElementModel(
@@ -35,7 +34,7 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 20,
       color: Colors.black,
       hexColor: '000',
-      icon: CommunityMaterialIcons.cube_outline,
+      icon: Icons.view_in_ar,
       totalLenght: 0,
     ),
     ElementModel(
@@ -43,7 +42,7 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 2000,
       color: Colors.white,
       hexColor: 'e0e0e0',
-      icon: CommunityMaterialIcons.gate,
+      icon: Icons.fence,
       totalLenght: 0,
     ),
     ElementModel(
@@ -51,15 +50,15 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 4000,
       color: Colors.grey.shade600,
       hexColor: 'a19a9a',
-      icon: CommunityMaterialIcons.gate_open,
+      icon: Icons.horizontal_distribute,
       totalLenght: 0,
     ),
     ElementModel(
       name: 'Furtka',
       lenght: 1200,
-      color: Colors.yellow,
+      color: Colors.yellow.shade400,
       hexColor: 'ffee00',
-      icon: CommunityMaterialIcons.door,
+      icon: Icons.door_back_door_outlined,
       totalLenght: 0,
     ),
     ElementModel(
@@ -67,23 +66,23 @@ class ElementModelProvider with ChangeNotifier {
       lenght: 1200,
       color: Colors.orange.shade900,
       hexColor: 'ff8c12',
-      icon: CommunityMaterialIcons.trash_can_outline,
+      icon: Icons.delete_outline,
       totalLenght: 0,
     ),
     ElementModel(
       name: 'Zawias',
       lenght: 50,
-      color: Colors.green,
+      color: Colors.green.shade500,
       hexColor: '00d612',
-      icon: CommunityMaterialIcons.gate_arrow_right,
+      icon: Icons.format_indent_decrease_sharp,
       totalLenght: 0,
     ),
     ElementModel(
       name: 'Klamka',
       lenght: 100,
-      color: Colors.blue,
+      color: Colors.blue.shade500,
       hexColor: '0281e8',
-      icon: CommunityMaterialIcons.format_text_wrapping_wrap,
+      icon: Icons.wrap_text_outlined,
       totalLenght: 0,
     ),
   ];
@@ -175,6 +174,48 @@ class ElementModelProvider with ChangeNotifier {
       default:
     }
     // sliderSensitive = val;
+    notifyListeners();
+  }
+  //
+  //
+  //
+  //Save files in shared
+
+  String createSaveFileText() {
+    String text = '';
+    for (var element in createdElementListget) {
+      text += '${element.name.toString()}>>';
+      text += '${element.color}>>';
+      text += '${element.hexColor.toString()}>>';
+      text += '${element.icon.toString()}>>';
+      text += '${element.lenght.toString()}>>';
+      text += element.totalLenght.toString();
+      text += '{end}';
+    }
+    return text;
+  }
+
+  void loadListFromPref(String data) {
+    createdElementlist.clear();
+    List<String> list = data.split('{end}');
+    for (var i = 0; i < list.length - 1; i++) {
+      createdElementlist.add(
+        ElementModel(
+          name: list[i].split('>>')[0],
+          color: Color(int.parse(
+              (list[i].split('>>')[1]).split('Color(0x')[1].split(')')[0],
+              radix: 16)),
+          hexColor: list[i].split('>>')[2],
+          icon: IconData(
+            int.parse(
+                list[i].split('>>')[3].split('IconData(U+')[1].split(')')[0],
+                radix: 16),
+          ),
+          lenght: int.parse(list[i].split('>>')[4]),
+          totalLenght: int.parse(list[i].split('>>')[5]),
+        ),
+      );
+    }
     notifyListeners();
   }
 }

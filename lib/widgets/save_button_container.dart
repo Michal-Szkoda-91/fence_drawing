@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:provider/provider.dart';
 
+import '../models/save_file_helper.dart';
+import '../models/element_model.dart';
 import '../providers/content_row_porviders.dart';
 
 class SaveButtonContainer extends StatelessWidget {
+  final FilePickerHelper filePickerHelper;
   const SaveButtonContainer({
     Key? key,
+    required this.filePickerHelper,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<DataProviders>(context);
+    final model = Provider.of<ElementModelProvider>(context);
     return SizedBox(
       height: 60,
       width: double.infinity,
@@ -43,7 +49,33 @@ class SaveButtonContainer extends StatelessWidget {
               ),
             ),
             label: const Text('Zapisz'),
-            onPressed: () {},
+            onPressed: () {
+              model.createSaveFileText();
+              filePickerHelper.saveFile(data.title, model.createSaveFileText());
+              data.setsaveFileOpacity(false);
+              showDialog(
+                barrierColor: Colors.black87,
+                context: context,
+                builder: (ctx) {
+                  return Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      width: 200,
+                      height: 100,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Dodano plik do zapisanych',
+                        style: Theme.of(context).textTheme.headline2,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
             icon: Icon(
               Icons.save,
               color: Theme.of(context).colorScheme.secondary,
