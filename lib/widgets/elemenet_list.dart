@@ -42,6 +42,7 @@ class _ElementListState extends State<ElementList> {
               child: InkWell(
                 splashColor: Theme.of(context).backgroundColor,
                 hoverColor: Colors.black26,
+                borderRadius: BorderRadius.circular(5),
                 onTap: () {
                   Provider.of<ElementModelProvider>(context, listen: false)
                       .addElement(

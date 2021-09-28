@@ -1,11 +1,12 @@
 import 'package:desktop_window/desktop_window.dart';
-import 'package:fence_drawing/models/element_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:provider/provider.dart';
 
 import 'main_window.dart';
+import '../models/save_file_helper.dart';
+import '../models/element_model.dart';
 import 'providers/content_row_porviders.dart';
 
 void main() {
@@ -63,6 +64,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ElementModelProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FilePickerHelper(),
         )
       ], child: const MainWindow()),
     );

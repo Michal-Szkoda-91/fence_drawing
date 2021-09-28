@@ -25,7 +25,7 @@ class MenuContainer extends StatelessWidget {
               },
               child: Container(
                 width: 250,
-                height: 350,
+                // height: 350,
                 color: Theme.of(context).cardColor,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
@@ -98,6 +98,7 @@ class MenuContainer extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),

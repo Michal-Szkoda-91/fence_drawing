@@ -7,16 +7,15 @@ import '../models/element_model.dart';
 import '../providers/content_row_porviders.dart';
 
 class SaveButtonContainer extends StatelessWidget {
-  final FilePickerHelper filePickerHelper;
   const SaveButtonContainer({
     Key? key,
-    required this.filePickerHelper,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<DataProviders>(context);
     final model = Provider.of<ElementModelProvider>(context);
+    final fileProvider = Provider.of<FilePickerHelper>(context);
     return SizedBox(
       height: 60,
       width: double.infinity,
@@ -51,10 +50,9 @@ class SaveButtonContainer extends StatelessWidget {
             label: const Text('Zapisz'),
             onPressed: () {
               model.createSaveFileText();
-              filePickerHelper.saveFile(data.title, model.createSaveFileText());
-              data.setsaveFileOpacity(false);
+              fileProvider.saveFile(data.title, model.createSaveFileText());
               showDialog(
-                barrierColor: Colors.black87,
+                barrierColor: Colors.black54,
                 context: context,
                 builder: (ctx) {
                   return Center(
