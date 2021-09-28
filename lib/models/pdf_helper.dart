@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:fence_drawing/providers/content_row_porviders.dart';
+import 'package:fence_drawing/models/content_row_porviders.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/content_row_porviders.dart';
+import '../models/content_row_porviders.dart';
 
 class PlannedLengthTextField extends StatefulWidget {
   const PlannedLengthTextField({Key? key}) : super(key: key);

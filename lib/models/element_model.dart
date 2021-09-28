@@ -199,6 +199,9 @@ class ElementModelProvider with ChangeNotifier {
     createdElementlist.clear();
     List<String> list = data.split('{end}');
     for (var i = 0; i < list.length - 1; i++) {
+      print(int.parse(
+          list[i].split('>>')[3].split('IconData(U+')[1].split(')')[0],
+          radix: 16));
       createdElementlist.add(
         ElementModel(
           name: list[i].split('>>')[0],
@@ -207,10 +210,10 @@ class ElementModelProvider with ChangeNotifier {
               radix: 16)),
           hexColor: list[i].split('>>')[2],
           icon: IconData(
-            int.parse(
-                list[i].split('>>')[3].split('IconData(U+')[1].split(')')[0],
-                radix: 16),
-          ),
+              int.parse(
+                  list[i].split('>>')[3].split('IconData(U+')[1].split(')')[0],
+                  radix: 16),
+              fontFamily: 'MaterialIcons'),
           lenght: int.parse(list[i].split('>>')[4]),
           totalLenght: int.parse(list[i].split('>>')[5]),
         ),
