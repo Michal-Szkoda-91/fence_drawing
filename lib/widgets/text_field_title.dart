@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/content_row_porviders.dart';
+import '../models/content_row_porviders.dart';
 
 class TextFormWithTitle extends StatelessWidget {
-  const TextFormWithTitle({
+  TextFormWithTitle({
     Key? key,
   }) : super(key: key);
+
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<DataProviders>(context);
+    textEditingController.text = data.getTitle;
     return TextFormField(
       cursorColor: Theme.of(context).colorScheme.secondary,
-      // initialValue: data.getTitle,
       style: Theme.of(context).textTheme.headline1,
       textAlign: TextAlign.center,
-
+      controller: textEditingController,
       decoration: InputDecoration(
         hintText: 'Wpisz tytuł...',
         hintStyle: TextStyle(color: Colors.grey.shade700),

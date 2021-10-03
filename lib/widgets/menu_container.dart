@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/print_preview.dart';
 import '../models/pdf_helper.dart';
-import '../providers/content_row_porviders.dart';
+import '../models/content_row_porviders.dart';
 
 class MenuContainer extends StatelessWidget {
   MenuContainer({

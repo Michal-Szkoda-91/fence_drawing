@@ -12,12 +12,13 @@ class FilePickerHelper with ChangeNotifier {
 
   void createKeyList() {
     keyList.clear();
-    keyList = loadAllFiles().toList();
+      keyList = loadAllFiles().toList();
     notifyListeners();
   }
 
   Future<void> initData() async {
     _localStorage = await LocalStorage.getInstance();
+    createKeyList();
   }
 
   void deleteAllFiles() {

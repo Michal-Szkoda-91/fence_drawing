@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'main_window.dart';
 import '../models/save_file_helper.dart';
 import '../models/element_model.dart';
-import 'providers/content_row_porviders.dart';
+import 'models/content_row_porviders.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

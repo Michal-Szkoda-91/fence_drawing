@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/content_row_porviders.dart';
+import '../models/content_row_porviders.dart';
 import 'text_field_planned.dart';
 
 class PlannedLenght extends StatefulWidget {

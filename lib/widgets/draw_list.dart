@@ -1,4 +1,4 @@
-import 'package:fence_drawing/providers/content_row_porviders.dart';
+import 'package:fence_drawing/models/content_row_porviders.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

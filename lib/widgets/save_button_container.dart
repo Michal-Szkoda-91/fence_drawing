@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../models/save_file_helper.dart';
 import '../models/element_model.dart';
-import '../providers/content_row_porviders.dart';
+import '../models/content_row_porviders.dart';
 
 class SaveButtonContainer extends StatelessWidget {
   const SaveButtonContainer({
@@ -49,8 +49,12 @@ class SaveButtonContainer extends StatelessWidget {
             ),
             label: const Text('Zapisz'),
             onPressed: () {
-              model.createSaveFileText();
-              fileProvider.saveFile(data.title, model.createSaveFileText());
+              model.createSaveFileText(
+                  data.getTitle, data.plannedLenght, data.actualLenght);
+              fileProvider.saveFile(
+                  data.title,
+                  model.createSaveFileText(
+                      data.getTitle, data.plannedLenght, data.actualLenght));
               showDialog(
                 barrierColor: Colors.black54,
                 context: context,
