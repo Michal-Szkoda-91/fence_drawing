@@ -14,7 +14,7 @@ class SaveReadFileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dataProviders = Provider.of<DataProviders>(context);
-    var fileProvider = Provider.of<FilePickerHelper>(context);
+    var fileProvider = Provider.of<FilePickerHelper>(context, listen: false);
     return Positioned(
       right: 20,
       top: 20,

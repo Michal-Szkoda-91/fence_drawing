@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/save_file_helper.dart';
+import '../models/content_row_porviders.dart';
 import '../models/element_model.dart';
 
 class SavedFileList extends StatelessWidget {
@@ -15,6 +16,8 @@ class SavedFileList extends StatelessWidget {
   Widget build(BuildContext context) {
     var elementProvider = Provider.of<ElementModelProvider>(context);
     var fileProvider = Provider.of<FilePickerHelper>(context);
+    var dataProvider = Provider.of<DataProviders>(context);
+
     return fileProvider.getKeyList.isEmpty
         ? const Center()
         : RawScrollbar(
@@ -40,9 +43,15 @@ class SavedFileList extends StatelessWidget {
                             hoverColor: Colors.black26,
                             borderRadius: BorderRadius.circular(5),
                             onTap: () {
-                              elementProvider.loadListFromPref(
-                                  fileProvider.loadFile(
-                                      fileProvider.keyList.elementAt(index)));
+                              String gotList = fileProvider.loadFile(
+                                fileProvider.keyList.elementAt(index),
+                              );
+                              elementProvider.loadListFromPref(gotList);
+                              dataProvider.setTitle(gotList.split('}}')[0]);
+                              dataProvider.setPlannedLenght(
+                                  int.parse(gotList.split('}}')[1]));
+                              dataProvider.setactualLenght(
+                                  int.parse(gotList.split('}}')[2]));
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 30),

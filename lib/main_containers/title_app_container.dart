@@ -24,10 +24,10 @@ class TitleAppContainer extends StatelessWidget {
         ),
       ),
       child: Row(
-        children: const [
+        children: [
           Expanded(child: TextFormWithTitle()),
-          MenuIconButton(),
-          SizedBox(width: 15),
+          const MenuIconButton(),
+          const SizedBox(width: 15),
         ],
       ),
     );

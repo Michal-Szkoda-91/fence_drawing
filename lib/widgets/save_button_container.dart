@@ -49,8 +49,12 @@ class SaveButtonContainer extends StatelessWidget {
             ),
             label: const Text('Zapisz'),
             onPressed: () {
-              model.createSaveFileText();
-              fileProvider.saveFile(data.title, model.createSaveFileText());
+              model.createSaveFileText(
+                  data.getTitle, data.plannedLenght, data.actualLenght);
+              fileProvider.saveFile(
+                  data.title,
+                  model.createSaveFileText(
+                      data.getTitle, data.plannedLenght, data.actualLenght));
               showDialog(
                 barrierColor: Colors.black54,
                 context: context,

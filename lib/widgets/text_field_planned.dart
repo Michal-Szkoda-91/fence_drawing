@@ -12,15 +12,17 @@ class PlannedLengthTextField extends StatefulWidget {
 
 class _PlannedLengthTextFieldState extends State<PlannedLengthTextField> {
   static final RegExp _numberRegExp = RegExp(r'^[0-9]+$');
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    textEditingController.text =
+        Provider.of<DataProviders>(context).plannedLenght.toString();
     return SizedBox(
       width: 140,
       height: 50,
       child: TextFormField(
-        initialValue:
-            Provider.of<DataProviders>(context).plannedLenght.toString(),
+        controller: textEditingController,
         textAlign: TextAlign.center,
         style: Theme.of(context)
             .textTheme

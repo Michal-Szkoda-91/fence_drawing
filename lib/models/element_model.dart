@@ -181,8 +181,8 @@ class ElementModelProvider with ChangeNotifier {
   //
   //Save files in shared
 
-  String createSaveFileText() {
-    String text = '';
+  String createSaveFileText(String title, int plannedLenght, int actualLength) {
+    String text = '$title}}$plannedLenght}}$actualLength}}';
     for (var element in createdElementListget) {
       text += '${element.name.toString()}>>';
       text += '${element.color}>>';
@@ -197,11 +197,9 @@ class ElementModelProvider with ChangeNotifier {
 
   void loadListFromPref(String data) {
     createdElementlist.clear();
-    List<String> list = data.split('{end}');
+    String dataToList = data.split('}}')[3];
+    List<String> list = dataToList.split('{end}');
     for (var i = 0; i < list.length - 1; i++) {
-      print(int.parse(
-          list[i].split('>>')[3].split('IconData(U+')[1].split(')')[0],
-          radix: 16));
       createdElementlist.add(
         ElementModel(
           name: list[i].split('>>')[0],
